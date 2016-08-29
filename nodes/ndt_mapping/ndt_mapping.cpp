@@ -285,7 +285,8 @@ static void points_callback(const sensor_msgs::PointCloud2::ConstPtr& input)
         }
 
         // select points for other process
-        if(p.x > 0 && abs(p.y) < 5 && abs(p.x) < 5)
+        // if(p.x > 0 && abs(p.y) < 5 && abs(p.x) < 5)
+        if(p.x > 0)
         {
             scan_selected.push_back(tmp_rgb.points[cloud_index]);	
         }
