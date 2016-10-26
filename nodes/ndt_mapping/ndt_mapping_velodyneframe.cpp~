@@ -30,7 +30,7 @@
 
 /*
  Localization and mapping program using Normal Distributions Transform
- 
+
  Yuki KITSUKAWA
  */
 
@@ -251,8 +251,8 @@ static void points_callback(const sensor_msgs::PointCloud2::ConstPtr& input)
     ros::Time scan_time = input->header.stamp;
 
     tf::StampedTransform velodyne_to_map;
-    tfListener->waitForTransform("/base_link", input->header.frame_id,ros::Time(0), ros::Duration(0.5));
-    tfListener->lookupTransform("/base_link", input->header.frame_id, ros::Time(0), velodyne_to_map);
+    tfListener->waitForTransform(input->header.frame_id, input->header.frame_id,ros::Time(0), ros::Duration(0.5));
+    tfListener->lookupTransform(input->header.frame_id, input->header.frame_id, ros::Time(0), velodyne_to_map);
 
     sensor_msgs::PointCloud2 cloud_map;
     Eigen::Matrix4f eigen_transform;
@@ -285,8 +285,8 @@ static void points_callback(const sensor_msgs::PointCloud2::ConstPtr& input)
         }
 
         // select points for other process
-         if(p.x > 0 && abs(p.y) < 5 && p.z < 1)
-       // if(p.x > 0)
+        // if(p.x > 0 && abs(p.y) < 5 && abs(p.x) < 5)
+        if(p.x > 0)
         {
             scan_selected.push_back(tmp_rgb.points[cloud_index]);	
         }
