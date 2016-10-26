@@ -39,14 +39,14 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
-add_executable(ndt_matching nodes/ndt_matching/ndt_matching.cpp)
+#add_executable(ndt_matching nodes/ndt_matching/ndt_matching.cpp)
 add_executable(ndt_mapping nodes/ndt_mapping/ndt_mapping.cpp)
 add_executable(local2global nodes/local2global/local2global.cpp)
 
-target_link_libraries(ndt_matching ${catkin_LIBRARIES})
+#target_link_libraries(ndt_matching ${catkin_LIBRARIES})
 target_link_libraries(ndt_mapping ${catkin_LIBRARIES})
 target_link_libraries(local2global ${catkin_LIBRARIES})
 
-add_dependencies(ndt_matching runtime_manager_generate_messages_cpp ndt_localizer_generate_messages_cpp)
+#add_dependencies(ndt_matching runtime_manager_generate_messages_cpp ndt_localizer_generate_messages_cpp)
 add_dependencies(ndt_mapping runtime_manager_generate_messages_cpp)
 add_dependencies(local2global runtime_manager_generate_messages_cpp)
